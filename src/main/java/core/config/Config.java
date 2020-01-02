@@ -1,4 +1,4 @@
-package config;
+package core.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
@@ -11,7 +11,7 @@ import java.io.File;
 @Getter
 public class Config {
 
-    private final static String yamlSource = "/home/msasin/www/tosterApp/automation-test-tool/src/main/resources/selenium-config.yaml";
+    private final static String yamlSource = "src/main/resources/selenium-config.yaml";
 
     @JsonProperty("url")
     String url;

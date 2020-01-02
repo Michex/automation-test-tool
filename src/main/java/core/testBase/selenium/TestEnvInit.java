@@ -1,6 +1,6 @@
-package base.selenium;
+package core.testBase.selenium;
 
-import config.Config;
+import core.config.Config;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import io.vavr.control.Try;
 import org.openqa.selenium.Dimension;

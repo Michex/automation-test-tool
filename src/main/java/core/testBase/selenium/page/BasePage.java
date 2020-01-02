@@ -1,7 +1,7 @@
-package base.selenium.page;
+package core.testBase.selenium.page;
 
 
-import base.selenium.TestEnvInit;
+import core.testBase.selenium.TestEnvInit;
 import org.openqa.selenium.WebDriver;
 
 public abstract class BasePage {

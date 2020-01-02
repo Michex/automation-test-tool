@@ -1,8 +1,5 @@
-package base.selenium.page;
+package core.testBase.selenium.page;
 
-import base.logger.LogToJson;
-import base.logger.Log;
-import base.logger.StatusEnum;
 import io.vavr.control.Try;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

@@ -1,4 +1,4 @@
-package helper;
+package core.helper;
 
 import org.apache.commons.lang3.StringUtils;
 

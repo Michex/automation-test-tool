@@ -1,6 +1,6 @@
-//package base.selenium;
+//package core.base.selenium;
 //
-//import config.Config;
+//import core.config.Config;
 //import io.github.bonigarcia.wdm.ChromeDriverManager;
 //import io.github.bonigarcia.wdm.WebDriverManager;
 //import io.vavr.collection.HashMap;

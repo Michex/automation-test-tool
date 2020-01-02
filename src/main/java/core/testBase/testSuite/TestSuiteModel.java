@@ -1,4 +1,4 @@
-package base.testSuite;
+package core.testBase.testSuite;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;

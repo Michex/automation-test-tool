@@ -1,7 +1,6 @@
 package tests.googleSearchTest.pages;
 
-import base.selenium.page.BasePage;
-import org.openqa.selenium.By;
+import core.testBase.selenium.page.BasePage;
 import org.openqa.selenium.WebElement;
 
 public class GoogleSearchPage extends BasePage {

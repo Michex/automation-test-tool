@@ -1,6 +1,6 @@
-package base.selenium.page;
+package core.testBase.selenium.page;
 
-import config.Config;
+import core.config.Config;
 import io.vavr.control.Try;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;

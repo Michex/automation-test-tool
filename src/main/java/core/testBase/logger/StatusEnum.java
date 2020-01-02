@@ -1,4 +1,4 @@
-package base.logger;
+package core.testBase.logger;
 
 public enum StatusEnum {
 

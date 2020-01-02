@@ -1,4 +1,4 @@
-package base.selenium.page;
+package core.testBase.selenium.page;
 
 
 public class Asserts {

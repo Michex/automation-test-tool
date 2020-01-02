@@ -1,8 +1,4 @@
-package base.logger;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.FileOutputStream;
+package core.testBase.logger;
 
 public class Log {
 
