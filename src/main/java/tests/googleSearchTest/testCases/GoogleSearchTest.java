@@ -10,7 +10,6 @@ public class GoogleSearchTest {
         this.doTestMagic();
     }
 
-
     private void doTestMagic() {
 
         final String searchValue = "toster";

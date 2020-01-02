@@ -16,7 +16,7 @@ public class LogToJson {
         ObjectMapper mapper = new ObjectMapper();
         mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
 
-        Try.run(() -> mapper.writeValue(new File("log.json"), logs)).onFailure(Throwable::printStackTrace);
+        Try.run(() -> mapper.writeValue(new File("report/logFromTests.json"), logs)).onFailure(Throwable::printStackTrace);
 
     }
 

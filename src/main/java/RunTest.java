@@ -2,10 +2,16 @@ import base.logger.Log;
 import base.logger.LogToJson;
 import base.logger.StatusEnum;
 import base.selenium.TestEnvInit;
+import base.testSuite.TestSuiteModel;
+import com.aventstack.extentreports.model.Test;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import config.Config;
 import helper.Helper;
 import io.vavr.collection.List;
 import io.vavr.control.Try;
 
+import java.io.File;
 import java.util.ArrayList;
 
 
@@ -17,13 +23,15 @@ public class RunTest {
 
         RunTest runTest = new RunTest();
 
-        List<String> tests = List.of(
-                "tests.googleSearchTest.testCases.GoogleSearchTest",
-                "tests.googleSearchTest.testCases.ExampleFailTest");
+        ObjectMapper objectMapper = new ObjectMapper();
 
-        ArrayList<Log> logs = new ArrayList();
+        File file = new File(Config.getConfig().getTestSuitePath());
+        TestSuiteModel testSuiteModel = Try.of(() -> objectMapper.readValue(file, TestSuiteModel.class)).onFailure(Throwable::printStackTrace).get();
 
-        runTest.runTests(tests, logs);
+
+        ArrayList logs = new ArrayList();
+
+        runTest.runTests(List.ofAll(testSuiteModel.getTests()), logs);
 
         runTest.printLogs(logs);
 

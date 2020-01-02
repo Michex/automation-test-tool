@@ -22,6 +22,10 @@ public class Config {
     @JsonProperty("implicitly wait")
     int waitTime;
 
+    @JsonProperty("test suite path")
+    String testSuitePath;
+
+
     private static final Config INSTANCE = new Config();
 
     public static Config getConfig() {

@@ -1,0 +1,6 @@
+{
+  "tests":[
+    "tests.googleSearchTest.testCases.GoogleSearchTest",
+    "tests.googleSearchTest.testCases.ExampleFailTest"
+  ]
+}
