@@ -9,7 +9,7 @@ public class Asserts {
     public void compareTwoValues(String valueFromElement, String value) {
 
         if (!valueFromElement.equals(value)) {
-            throw new AssertionError("Value from element: " + valueFromElement + "is not compare to expected value: " + value);
+            throw new AssertionError("Value from element: " + valueFromElement + " is not compare to expected value: " + value);
         }
     }
 
