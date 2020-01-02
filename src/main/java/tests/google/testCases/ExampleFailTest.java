@@ -1,7 +1,7 @@
-package tests.googleSearchTest.testCases;
+package tests.google.testCases;
 
-import tests.googleSearchTest.pages.GoogleHomePage;
-import tests.googleSearchTest.pages.GoogleSearchPage;
+import tests.google.pages.GoogleHomePage;
+import tests.google.pages.GoogleSearchPage;
 
 
 public class ExampleFailTest {

@@ -18,26 +18,27 @@ public class TestRunner {
 
     private final ArrayList<Log> logs = new ArrayList<Log>();
 
-    private final List<String> tests;
+    List<TestSuiteModel> testSuiteModels;
 
     public TestRunner() {
 
-        tests = List.ofAll(Try.of(() ->
+        testSuiteModels = List.of(Try.of(() ->
                 new ObjectMapper().readValue(
                         new File(Config.getConfig().getTestSuitePath()), TestSuiteModel.class))
-                .onFailure(Throwable::printStackTrace).get().getTests());
+                .onFailure(Throwable::printStackTrace).get());
+
     }
 
     public void runTests() {
 
-        tests.forEach(testClassName -> {
+        testSuiteModels.forEach(testSuiteModel ->
+                testSuiteModel.getTests().forEach(testName -> {
 
-            Class<?> clazz = this.getTestClasses(testClassName);
-            final String testName = this.getTestNameFromClass(clazz);
-            TestEnvInit init = new TestEnvInit();
-            this.runTest(init, clazz, testName, logs);
+                    Class<?> clazz = this.getTestClasses("tests." + testSuiteModel.getAppName() + ".testCases." + testName);
+                    TestEnvInit init = new TestEnvInit();
+                    this.runTest(init, clazz, Helper.convertCamelCasesToNormal(testName), logs);
 
-        });
+                }));
     }
 
     public void printLogs() {
@@ -73,10 +74,6 @@ public class TestRunner {
         init.closeBrowser();
     }
 
-
-    private String getTestNameFromClass(Class<?> clazz) {
-        return Helper.convertCamelCasesToNormal(clazz.getSimpleName());
-    }
 
     private Class<?> getTestClasses(String testClassName) {
         return Try.of(() -> Class.forName(testClassName))

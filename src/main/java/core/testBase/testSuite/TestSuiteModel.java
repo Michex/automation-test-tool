@@ -2,12 +2,15 @@ package core.testBase.testSuite;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
 
 import java.util.List;
 
-@Getter
+
 public class TestSuiteModel {
+
+
+    @JsonProperty("appName")
+    private String appName;
 
     @JsonProperty("tests")
     private List<String> tests;
@@ -15,6 +18,15 @@ public class TestSuiteModel {
 
     private TestSuiteModel() {
 
+    }
+
+    public String getAppName() {
+        return appName;
+    }
+
+
+    public List<String> getTests() {
+        return tests;
     }
 
 

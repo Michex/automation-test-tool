@@ -1,6 +1,7 @@
 {
+  "appName": "google",
   "tests":[
-    "tests.googleSearchTest.testCases.GoogleSearchTest",
-    "tests.googleSearchTest.testCases.ExampleFailTest"
+    "GoogleSearchTest",
+    "ExampleFailTest"
   ]
 }

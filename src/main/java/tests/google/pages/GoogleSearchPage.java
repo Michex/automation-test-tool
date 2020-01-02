@@ -1,4 +1,4 @@
-package tests.googleSearchTest.pages;
+package tests.google.pages;
 
 import core.testBase.selenium.page.BasePage;
 import org.openqa.selenium.WebElement;
