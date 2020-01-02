@@ -11,7 +11,7 @@ import java.io.File;
 @Getter
 public class Config {
 
-    private final static String yamlSource = "selenium-config.yaml";
+    private final static String yamlSource = "/home/msasin/www/tosterApp/automation-test-tool/src/main/resources/selenium-config.yaml";
 
     @JsonProperty("url")
     String url;
