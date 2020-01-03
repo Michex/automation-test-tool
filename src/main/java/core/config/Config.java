@@ -25,6 +25,9 @@ public class Config {
     @JsonProperty("test suite path")
     String testSuitePath;
 
+    @JsonProperty("test status path")
+    String testStatusPath;
+
 
     private static final Config INSTANCE = new Config();
 
