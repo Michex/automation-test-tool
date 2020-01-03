@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'jacoco'
 }
 
 group 'pl.tosterappp'
@@ -25,4 +26,5 @@ dependencies {
         compileOnly 'org.projectlombok:lombok:1.18.10'
         annotationProcessor 'org.projectlombok:lombok:1.18.8'
 
+        testImplementation 'junit:junit:4.12'
 }
