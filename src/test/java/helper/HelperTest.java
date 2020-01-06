@@ -2,6 +2,7 @@ package helper;
 
 import static org.junit.Assert.*;
 
+import core.helper.Helper;
 import org.junit.Test;
 
 public class HelperTest {
