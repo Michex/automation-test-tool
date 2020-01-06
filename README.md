@@ -1,6 +1,6 @@
 # automation-test-tool
 
-![](https://github.com/szymex/automation-test-tool/workflows/Java%20CI/badge.svg)
+![](https://github.com/Michex/automation-test-tool/workflows/Automation%20Test%20Tool%20CI/badge.svg)
 
 Tool for make automation test in selenium and rest assured.
 
