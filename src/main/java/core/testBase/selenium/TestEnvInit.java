@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 public class TestEnvInit {
 
-    private final static Config config = Config.getConfig();
+    private final Config config = Config.getInstance();
     public static WebDriver driver;
 
 

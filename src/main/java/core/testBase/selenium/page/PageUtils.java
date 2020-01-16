@@ -19,7 +19,7 @@ public class PageUtils {
 
     PageUtils(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Config.getConfig().getWaitTime());
+        this.wait = new WebDriverWait(driver, Config.getInstance().getWaitTime());
     }
 
     public void goToPage(String url) {

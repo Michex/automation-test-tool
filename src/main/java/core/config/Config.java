@@ -1,45 +1,46 @@
 package core.config;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
+import com.sun.tools.javac.Main;
 import io.vavr.control.Try;
-import lombok.Getter;
+import lombok.Data;
 
-import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.Properties;
 
-@Getter
+@Data
 public class Config {
 
-    private final static String yamlSource = "src/main/resources/selenium-config.yaml";
-
-    @JsonProperty("url")
-    String url;
-
-    @JsonProperty("window size")
-    String windowSize;
-
-    @JsonProperty("implicitly wait")
-    int waitTime;
-
-    @JsonProperty("test suite path")
-    String testSuitePath;
-
-    @JsonProperty("test status path")
-    String testStatusPath;
-
+    private String url;
+    private String windowSize;
+    private int waitTime;
+    private String testStatusPath;
 
     private static final Config INSTANCE = new Config();
 
-    public static Config getConfig() {
-        ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-        return Try.of(() -> {
-            return mapper.readValue(new File(yamlSource), Config.class);
-        }).onFailure(Throwable::printStackTrace).get();
-    }
 
     private Config() {
 
+
+        InputStream input = Config.class.getClassLoader().getResourceAsStream("config.properties");
+
+        Properties appProps = new Properties();
+
+
+        Try.run(() -> appProps.load(input)).onFailure(Throwable::printStackTrace);
+
+        url = appProps.getProperty("url");
+        windowSize = appProps.getProperty("windowSize");
+        waitTime = Integer.parseInt(appProps.getProperty("implicitlyWait"));
+        testStatusPath = appProps.getProperty("testStatusPath");
+
     }
+
+    public static Config getInstance() {
+        return INSTANCE;
+    }
+
+
 
 }

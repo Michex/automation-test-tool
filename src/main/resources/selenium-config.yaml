@@ -1,7 +1,0 @@
-url: http://google.com
-window size: maximize # width x height EXP. 800x600 or maximize
-implicitly wait: 10 # seconds
-test suite path: ~/www/tosterApp/test-suite.json
-test status path: ~www/tosterApp/logFromTests.json
-
-

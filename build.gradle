@@ -1,17 +1,23 @@
 plugins {
-    id 'java'
+
+        id 'java'
+        id 'application'
+
 }
 
 group 'pl.tosterappp'
-version '1.0-SNAPSHOT'
+version '0.1'
 
 sourceCompatibility = 1.11
+targetCompatibility = 1.11
+
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+
         compile group: 'io.vavr', name: 'vavr', version: '0.10.0'
         compile group: 'com.aventstack', name: 'extentreports', version: '4.0.9'
         compile group: 'commons-io', name: 'commons-io', version: '2.6'
@@ -26,3 +32,17 @@ dependencies {
         annotationProcessor 'org.projectlombok:lombok:1.18.8'
 
 }
+
+application {
+        mainClassName = 'RunTest'
+}
+
+jar {
+        manifest {
+                attributes(
+                        'Main-Class': 'RunTest'
+                )
+        }
+}
+
+

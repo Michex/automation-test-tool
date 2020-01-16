@@ -1,14 +1,12 @@
 package core.testBase;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import core.config.Config;
 import core.helper.Helper;
 import core.testBase.logger.Log;
 import core.testBase.logger.LogToJson;
 import core.testBase.logger.StatusEnum;
 import core.testBase.selenium.TestEnvInit;
 import core.testBase.testSuite.TestSuiteModel;
-import io.vavr.collection.List;
 import io.vavr.control.Try;
 
 import java.io.File;
@@ -18,27 +16,28 @@ public class TestRunner {
 
     private final ArrayList<Log> logs = new ArrayList<Log>();
 
-    List<TestSuiteModel> testSuiteModels;
+    TestSuiteModel testSuiteModel;
 
-    public TestRunner() {
+    public TestRunner(String testSuitePath) {
 
-        testSuiteModels = List.of(Try.of(() ->
+
+         testSuiteModel = Try.of(() ->
                 new ObjectMapper().readValue(
-                        new File(Config.getConfig().getTestSuitePath()), TestSuiteModel.class))
-                .onFailure(Throwable::printStackTrace).get());
+                        new File(testSuitePath), TestSuiteModel.class))
+                .onFailure(Throwable::printStackTrace).get();
+
 
     }
 
     public void runTests() {
 
-        testSuiteModels.forEach(testSuiteModel ->
-                testSuiteModel.getTests().forEach(testName -> {
+        testSuiteModel.getTests().forEach(testName -> {
 
-                    Class<?> clazz = this.getTestClasses("tests." + testSuiteModel.getAppName() + ".testCases." + testName);
+                    Class<?> clazz = this.getTestClasses("tests." + testSuiteModel.getName() + ".testCases." + testName);
                     TestEnvInit init = new TestEnvInit();
                     this.runTest(init, clazz, Helper.convertCamelCasesToNormal(testName), logs);
 
-                }));
+                });
     }
 
     public void printLogs() {
