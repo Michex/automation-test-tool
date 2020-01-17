@@ -1,5 +1,8 @@
 import core.testBase.TestRunner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class RunTest {
 
@@ -7,7 +10,10 @@ public class RunTest {
 
     public static void main(String[] args) {
 
-        TestRunner testRunner = new TestRunner(args[0]);
+        //TODO get list of strings
+        List<String> testSuites = new ArrayList<>();
+
+        TestRunner testRunner = new TestRunner(testSuites);
 
         testRunner.runTests();
         testRunner.printLogs();

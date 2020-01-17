@@ -1,39 +1,33 @@
 package core.testBase;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import core.helper.Helper;
 import core.testBase.logger.Log;
 import core.testBase.logger.LogToJson;
 import core.testBase.logger.StatusEnum;
 import core.testBase.selenium.TestEnvInit;
-import core.testBase.testSuite.TestSuiteModel;
 import io.vavr.control.Try;
 
-import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TestRunner {
 
     private final ArrayList<Log> logs = new ArrayList<Log>();
 
-    TestSuiteModel testSuiteModel;
+    List<String> testSuites;
 
-    public TestRunner(String testSuitePath) {
+    public TestRunner(List<String> testSuites) {
 
-
-         testSuiteModel = Try.of(() ->
-                new ObjectMapper().readValue(
-                        new File(testSuitePath), TestSuiteModel.class))
-                .onFailure(Throwable::printStackTrace).get();
+        this.testSuites = testSuites;
 
 
     }
 
     public void runTests() {
 
-        testSuiteModel.getTests().forEach(testName -> {
+        testSuites.forEach(testName -> {
 
-                    Class<?> clazz = this.getTestClasses("tests." + testSuiteModel.getName() + ".testCases." + testName);
+                    Class<?> clazz = this.getTestClasses("tests." + testName + ".testCases." + testName);
                     TestEnvInit init = new TestEnvInit();
                     this.runTest(init, clazz, Helper.convertCamelCasesToNormal(testName), logs);
 

@@ -21,10 +21,8 @@ dependencies {
         compile group: 'io.vavr', name: 'vavr', version: '0.10.0'
         compile group: 'com.aventstack', name: 'extentreports', version: '4.0.9'
         compile group: 'commons-io', name: 'commons-io', version: '2.6'
-        compile 'com.fasterxml.jackson.core:jackson-databind:2.10.1'
-        compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.10.1'
         compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.10.1'
-
+        
         compile("io.github.bonigarcia:webdrivermanager:3.7.1")
         compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
 
