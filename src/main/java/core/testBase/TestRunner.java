@@ -5,10 +5,10 @@ import core.testBase.logger.Log;
 import core.testBase.logger.LogToJson;
 import core.testBase.logger.StatusEnum;
 import core.testBase.selenium.TestEnvInit;
+import io.vavr.collection.List;
 import io.vavr.control.Try;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class TestRunner {
 
@@ -20,14 +20,13 @@ public class TestRunner {
 
         this.testSuites = testSuites;
 
-
     }
 
     public void runTests() {
 
         testSuites.forEach(testName -> {
 
-                    Class<?> clazz = this.getTestClasses("tests." + testName + ".testCases." + testName);
+                    Class<?> clazz = this.getTestClasses("tests.testCases." + testName);
                     TestEnvInit init = new TestEnvInit();
                     this.runTest(init, clazz, Helper.convertCamelCasesToNormal(testName), logs);
 

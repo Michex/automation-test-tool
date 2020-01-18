@@ -1,7 +1,7 @@
-package tests.google.testCases;
+package tests.testCases;
 
-import tests.google.pages.GoogleHomePage;
-import tests.google.pages.GoogleSearchPage;
+import tests.pages.GoogleHomePage;
+import tests.pages.GoogleSearchPage;
 
 
 public class ExampleFailTest {
@@ -10,7 +10,7 @@ public class ExampleFailTest {
         this.superCrazyFail();
     }
 
-    public void superCrazyFail(){
+    private void superCrazyFail(){
 
         final String searchValue = "toster";
         GoogleHomePage googleHomePage = new GoogleHomePage();
