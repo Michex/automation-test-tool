@@ -19,7 +19,6 @@ repositories {
 dependencies {
 
         compile group: 'io.vavr', name: 'vavr', version: '0.10.0'
-        compile group: 'com.aventstack', name: 'extentreports', version: '4.0.9'
         compile group: 'commons-io', name: 'commons-io', version: '2.6'
 
         compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.10.1'
@@ -27,6 +26,8 @@ dependencies {
 
         compile("io.github.bonigarcia:webdrivermanager:3.7.1")
         compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+
+        compile group: 'io.rest-assured', name: 'rest-assured', version: '4.1.2'
 
         compileOnly 'org.projectlombok:lombok:1.18.10'
         annotationProcessor 'org.projectlombok:lombok:1.18.8'

@@ -4,13 +4,17 @@ public class Log {
 
     public final String testName;
     public final StatusEnum status;
-    public final String cause;
+    public final String stackTrace;
+    public final String date;
 
-    public Log(String testName, StatusEnum status, String cause) {
+
+    public Log(String testName, StatusEnum status, String stackTrace, String date) {
 
         this.testName = testName;
         this.status = status;
-        this.cause = cause;
+        this.stackTrace = stackTrace;
+        this.date = date;
+
     }
 
 }

@@ -9,12 +9,11 @@ public class RunTest {
 
         List<String> testSuites = List.of(args);
 
-        TestRunner testRunner = new TestRunner(testSuites);
+        List<String> testSuitesWithoutDate = testSuites.drop(0);
+
+        TestRunner testRunner = new TestRunner(testSuitesWithoutDate, testSuites.get(0));
 
         testRunner.runTests();
-        testRunner.printLogs();
-        testRunner.makeJsonFileFromLogs();
-
 
     }
 

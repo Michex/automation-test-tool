@@ -2,7 +2,7 @@ package core.testBase;
 
 import core.helper.Helper;
 import core.testBase.logger.Log;
-import core.testBase.logger.LogToJson;
+import core.testBase.logger.PostWithLog;
 import core.testBase.logger.StatusEnum;
 import core.testBase.selenium.TestEnvInit;
 import io.vavr.collection.List;
@@ -12,13 +12,13 @@ import java.util.ArrayList;
 
 public class TestRunner {
 
-    private final ArrayList<Log> logs = new ArrayList<Log>();
+    private final List<String> testSuites;
+    private final String currentDate;
 
-    List<String> testSuites;
-
-    public TestRunner(List<String> testSuites) {
+    public TestRunner(List<String> testSuites, String currentDate) {
 
         this.testSuites = testSuites;
+        this.currentDate = currentDate;
 
     }
 
@@ -28,38 +28,35 @@ public class TestRunner {
 
                     Class<?> clazz = this.getTestClasses("tests.testCases." + testName);
                     TestEnvInit init = new TestEnvInit();
-                    this.runTest(init, clazz, Helper.convertCamelCasesToNormal(testName), logs);
+                    this.runTest(init, clazz, Helper.convertCamelCasesToNormal(testName));
 
                 });
+
     }
 
-    public void printLogs() {
-        logs.forEach(log -> {
-            System.out.println(log.testName + ": " + log.status);
-        });
-    }
 
-    public void makeJsonFileFromLogs() {
-        LogToJson.makeLogFile(logs);
-    }
 
-    private void runTest(TestEnvInit init, Class<?> clazz, String testName, ArrayList<Log> logs) {
+    private void runTest(TestEnvInit init, Class<?> clazz, String testName) {
 
         Try.run(() -> {
             this.initTest(init);
             clazz.getDeclaredConstructor().newInstance();
         })
-                .onFailure(ex -> this.logFail(testName, logs, ex))
-                .onSuccess(run -> this.logPass(testName, logs))
+                .onFailure(ex -> this.logFail(testName, ex))
+                .onSuccess(run -> this.logPass(testName))
                 .andFinally(() -> this.closeWebdriver(init));
     }
 
-    private void logPass(String testName, ArrayList<Log> logs) {
-        logs.add(new Log(testName, StatusEnum.PASS, "null"));
+    private void logPass(String testName) {
+
+        final Log log = new PostWithLog(new Log(testName, StatusEnum.PASS, "null", currentDate)).log;
+        System.out.println(log.testName + ": " + log.status);
     }
 
-    private void logFail(String testName, ArrayList<Log> logs, Throwable ex) {
-        logs.add(new Log(testName, StatusEnum.FAIL, ex.getCause().getMessage()));
+    private void logFail(String testName, Throwable ex) {
+        final Log log = new PostWithLog(new Log(testName, StatusEnum.PASS, ex.getCause().getMessage(), currentDate)).log;
+        System.out.println(log.testName + ": " + log.status);
+
     }
 
     private void closeWebdriver(TestEnvInit init) {
