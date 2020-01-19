@@ -51,7 +51,6 @@ public class TestEnvInit {
 
     }
 
-
     public void setImplicitlyWait() {
         int waitTime = config.getWaitTime();
         driver.manage().timeouts().implicitlyWait(waitTime, TimeUnit.SECONDS);

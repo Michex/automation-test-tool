@@ -8,8 +8,6 @@ import core.testBase.selenium.TestEnvInit;
 import io.vavr.collection.List;
 import io.vavr.control.Try;
 
-import java.util.ArrayList;
-
 public class TestRunner {
 
     private final List<String> testSuites;
@@ -34,8 +32,6 @@ public class TestRunner {
 
     }
 
-
-
     private void runTest(TestEnvInit init, Class<?> clazz, String testName) {
 
         Try.run(() -> {
@@ -54,7 +50,8 @@ public class TestRunner {
     }
 
     private void logFail(String testName, Throwable ex) {
-        final Log log = new PostWithLog(new Log(testName, StatusEnum.PASS, ex.getCause().getMessage(), currentDate)).log;
+
+        final Log log = new PostWithLog(new Log(testName, StatusEnum.FAIL, ex.getCause().getMessage(), currentDate)).log;
         System.out.println(log.testName + ": " + log.status);
 
     }

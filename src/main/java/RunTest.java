@@ -5,13 +5,12 @@ public class RunTest {
 
     public static void main(String[] args) {
 
-        //TODO get list of strings
 
-        List<String> testSuites = List.of(args);
+        String currentTime = args[0];
 
-        List<String> testSuitesWithoutDate = testSuites.drop(0);
+        List<String> testSuites = List.of(args).drop(1);
 
-        TestRunner testRunner = new TestRunner(testSuitesWithoutDate, testSuites.get(0));
+        TestRunner testRunner = new TestRunner(testSuites, currentTime);
 
         testRunner.runTests();
 

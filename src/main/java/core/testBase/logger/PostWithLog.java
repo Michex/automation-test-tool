@@ -1,5 +1,7 @@
 package core.testBase.logger;
 
+import io.vavr.control.Try;
+
 import static io.restassured.RestAssured.given;
 
 public class PostWithLog {
@@ -14,15 +16,18 @@ public class PostWithLog {
 
     private void sendPost(Log log) {
 
-        given().
-                formParam("runDate", log.date).
-                formParam("stackTrace", log.stackTrace).
-                formParam("status", log.status).
-                formParam("testCaseName", log.testName).
-        when()
-                .post("http://localhost:8080/testRunner/setTestStatus").
-        then();
-
+        Try.run(() -> {
+            given().
+                    formParam("runDate", log.date).
+                    formParam("stackTrace", log.stackTrace).
+                    formParam("status", log.status).
+                    formParam("testCaseName", log.testName).
+                    when()
+                    .post("http://localhost:8080/testRunner/setTestStatus").
+                    then().statusCode(200);
+        }).onFailure(Throwable::printStackTrace);
     }
 
 }
+
+
