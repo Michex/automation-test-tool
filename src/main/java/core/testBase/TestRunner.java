@@ -26,7 +26,7 @@ public class TestRunner {
 
                     Class<?> clazz = this.getTestClasses("tests.testCases." + testName);
                     TestEnvInit init = new TestEnvInit();
-                    this.runTest(init, clazz, Helper.convertCamelCasesToNormal(testName));
+                    this.runTest(init, clazz, Helper.convertCamelCasesToSpaces(testName));
 
                 });
 
