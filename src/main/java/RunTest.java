@@ -9,9 +9,7 @@ public class RunTest {
         String currentTime = args[0];
 
         List<String> testSuites = List.of(args).drop(1);
-
         TestRunner testRunner = new TestRunner(testSuites, currentTime);
-
         testRunner.runTests();
 
     }

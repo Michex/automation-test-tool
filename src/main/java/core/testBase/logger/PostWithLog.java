@@ -26,7 +26,7 @@ public class PostWithLog {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://localhost:8080/testRunner/setTestStatus")
+                .url("http://localhost:8080/testStatus/setTestStatus")
                 .post(formBody)
                 .build();
 
